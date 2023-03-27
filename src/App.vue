@@ -12,6 +12,7 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="Vue CICD！！" />
+  
 </template>
 
 <style scoped>
