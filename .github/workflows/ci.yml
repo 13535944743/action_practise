@@ -28,4 +28,4 @@ jobs:
         pass: ${{ secrets.TG_PASS }}
         connect_timeout: 10s
         local: './dist/*'
-        remote: /home/action_practise
+        remote: /var/www/html/action_practise
