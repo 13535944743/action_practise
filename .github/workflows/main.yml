@@ -1,4 +1,4 @@
-name: CI Github Pages
+name: CICD
 on:
   #监听push操作
   push:
