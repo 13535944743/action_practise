@@ -12,7 +12,6 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="赤蓝紫 CICD KEY" />
-
 </template>
 
 <style scoped>
