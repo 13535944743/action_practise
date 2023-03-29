@@ -20,8 +20,14 @@ jobs:
           npm install
           npm run build
 
-      - name: Deploy   # 部署
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
+      - name: ssh scp ssh pipelines
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+        env:
+          WELCOME: "ssh scp ssh pipelines"
+          LASTSSH: "Doing something after copying"
         with:
-          branch: build # 部署后提交到那个分支
-          folder: dist # 这里填打包好的目录名称
+          host: ${{ secrets.CLZ_HOST }}
+          user: ${{ secrets.CLZ_USER }}
+          pass: ${{ secrets.CLZ_PASS }}
+          port: 22
+          connect_timeout: 10
