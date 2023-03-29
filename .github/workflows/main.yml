@@ -27,7 +27,7 @@ jobs:
           LASTSSH: "Doing something after copying"
         with:
           host: ${{ secrets.CLZ_HOST }}
-          # user: ${{ secrets.CLZ_USER }}
+          user: ${{ secrets.CLZ_USER }}
           key: ${{ secrets.CLZ_KEY }}
           port: 22
           connect_timeout: 10
