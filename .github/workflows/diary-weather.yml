@@ -25,5 +25,5 @@ jobs:
           subject: Shanghai Weather Report (${{env.REPORT_DATE}})
           # Required recipients' addresses:
           to: 1926389897@qq.com
-          from: 1926389897czh@gmail.com
+          from: Weather
           html_body: file://result.html
