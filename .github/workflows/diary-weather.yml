@@ -26,4 +26,4 @@ jobs:
           # Required recipients' addresses:
           to: 1926389897@qq.com
           from: 1926389897czh@gmail.com
-          body: 123456
+          html_body: file://result.html
