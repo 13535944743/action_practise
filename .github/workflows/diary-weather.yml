@@ -11,7 +11,9 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@v3
       - name: 'GET Weather'
-        run: bash ./weather.sh
+        run: |
+          bash ./weather.sh
+          cat ./result.html
       - name: 'Get Date'
         run: echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d $T')" >> $GITHUB_ENV
       - name: 'Send mail'
