@@ -14,3 +14,15 @@ jobs:
         run: bash ./weather.sh
       - name: 'Get Date'
         run: echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d $T')" >> $GITHUB_ENV
+      - name: 'Send mail'
+        uses: dawidd6/action-send-mail@master
+        with: 
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: Shanghai Weather Report (${{env.REPORT_DATE}})
+          # Required recipients' addresses:
+          to: 1926389897@qq.com
+          from: 1926389897czh@gmail.com
+          body: file://result.html
