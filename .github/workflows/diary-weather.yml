@@ -16,7 +16,7 @@ jobs:
           cat ./result.html
       - name: 'Get Date'
         run: echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d $T')" >> $GITHUB_ENV
-      - name: 'Send mail'
+      - name: 'Send mail '
         uses: dawidd6/action-send-mail@master
         with: 
           server_address: smtp.gmail.com
