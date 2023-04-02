@@ -19,13 +19,12 @@ jobs:
       - name: 'Send mail'
         uses: dawidd6/action-send-mail@master
         with: 
-          server_address: smtp.gmail.com
+          server_address: smtp.qq.com
           server_port: 465
           secure: true,
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Shanghai Weather Report (${{env.REPORT_DATE}})
-          # Required recipients' addresses:
-          to: 1926389897@qq.com
+          to: 1926389897czh@gmail.com
           from: Weather
           html_body: file://result.html
