@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '0 2,14 * * *'
 
 jobs:
   bot:
@@ -16,7 +16,7 @@ jobs:
           node ./weather.js
           cat ./result.html
       - name: 'Get Date'
-        run: echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d $T')" >> $GITHUB_ENV
+        run: echo "REPORT_DATE=$(date '+%Y-%m-%d %T')" >> $GITHUB_ENV
       - name: 'Send mail '
         uses: dawidd6/action-send-mail@master
         with: 
@@ -25,7 +25,7 @@ jobs:
           secure: true
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
-          subject: CLZ
+          subject: 天气预报
           to: 1926389897@qq.com
           from: CLZ
           html_body: file://result.html
