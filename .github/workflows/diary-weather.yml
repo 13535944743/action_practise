@@ -18,6 +18,7 @@ jobs:
       - name: 'Get Date'
         run: |
           TZ='Asia/Shanghai'
+          source ~/.bashrc
           echo "REPORT_DATE=$(date '+%Y-%m-%d %T')" >> $GITHUB_ENV
       - name: 'Send mail '
         uses: dawidd6/action-send-mail@master
