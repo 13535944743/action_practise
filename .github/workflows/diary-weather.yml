@@ -26,6 +26,6 @@ jobs:
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
           subject: CLZ
-          to: 1523641384@qq.com
-          from: Weather
+          to: 1825226704@qq.com
+          from: ZRF
           body: hahaha
