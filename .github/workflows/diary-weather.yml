@@ -25,7 +25,7 @@ jobs:
           secure: true
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
-          subject: 天气预报
+          subject: 天气预报(${{env.REPORT_DATE}})
           to: 1926389897@qq.com
           from: CLZ
           html_body: file://result.html
