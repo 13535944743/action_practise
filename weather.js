@@ -11,7 +11,7 @@ const result = `
   <style>
     .container {
       width: 100%;
-      height: 100%;
+      /* height: 100%; */
       background-color: #000;
     }
   </style>
