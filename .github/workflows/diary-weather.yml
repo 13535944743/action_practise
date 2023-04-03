@@ -19,7 +19,7 @@ jobs:
         run: |
           # export TZ='Asia/Shanghai'
           # source ~/.bashrc
-          echo "REPORT_DATE=$(TZ='Asia/Tokyo' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
+          echo "REPORT_DATE=$(TZ='Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
       - name: 'Send mail '
         uses: dawidd6/action-send-mail@master
         with: 
