@@ -14,6 +14,7 @@ jobs:
       - name: 'GET Weather'
         run: |
           bash ./weather.sh
+          node -v
           cat ./result.html
       - name: 'Get Date'
         run: echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d $T')" >> $GITHUB_ENV
