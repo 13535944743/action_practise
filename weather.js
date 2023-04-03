@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const CITY = 'Shenzhen';
+const CITY = '';  // Shenzhen
 
 const result = `
 
