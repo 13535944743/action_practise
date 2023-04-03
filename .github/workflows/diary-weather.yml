@@ -25,7 +25,7 @@ jobs:
           secure: true
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
-          subject: Shanghai Weather Report (${{env.REPORT_DATE}})
-          to: 1926389897@qq.com
+          subject: CLZ
+          to: 1523641384@qq.com
           from: Weather
-          html_body: file://result.html
+          body: hahaha
