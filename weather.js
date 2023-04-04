@@ -3,7 +3,6 @@ const fs = require('fs');
 const CITY = '';  // Shenzhen
 
 const result = `
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +21,7 @@ const result = `
   </div>
 </body>
 </html>
-`
+`;
 
 fs.writeFile('./result.html', result, (err) => {
   if (err) {
