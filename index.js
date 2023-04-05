@@ -8,6 +8,9 @@ const templateStr = `
 <head>
   <title>二次元</title>
   <style>
+    img {
+        width: 100%;
+    }
   </style>
 </head>
 <body>
