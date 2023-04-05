@@ -23,18 +23,20 @@ const templateStr = `
 
 const imgUrlPrefix = 'https://raw.githubusercontent.com/13535944743/action_practise/build';
 
-let imgSource = '';
-if (new Date().getDay() % 2 === 0) {
-    imgSource = 'https://konachan.net/post.json';
-} else {
-    imgSource = 'https://yande.re/post.json'
-}
+let imgSource = 'https://konachan.net/post.json';
+// if (new Date().getDay() % 2 === 0) {
+//     imgSource = 'https://konachan.net/post.json';
+// } else {
+//     imgSource = 'https://yande.re/post.json';
+// }
 
 (async () => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        headless: false
+    });
     const page = (await browser.pages())[0];
 
-    await page.goto(`${imgSource}/?tags=order%3Arandom`);
+    await page.goto(`${imgSource}?tags=order%3Arandom`);
 
     const preSelector = await page.waitForSelector('pre');
 
@@ -71,9 +73,11 @@ if (new Date().getDay() % 2 === 0) {
             await page.evaluate(async (imgUrl, filename) => {
                 const res = await fetch(imgUrl, {
                     method: 'get',
+                    credentials: 'include'
                 });
 
                 const blob = await res.blob();
+                console.log(blob);
 
                 const arrayBuffer = await blob.arrayBuffer();
                 const data = new Uint8Array(arrayBuffer);
@@ -87,5 +91,5 @@ if (new Date().getDay() % 2 === 0) {
         resolve('ok');
     })
 
-    await browser.close();
+    // await browser.close();
 })();
