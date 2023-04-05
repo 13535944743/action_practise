@@ -23,10 +23,10 @@ const templateStr = `
 </html>
 `;
 
+const imgUrlPrefix = 'https://raw.githubusercontent.com/13535944743/action_practise/release';
+
 (async () => {
-    const browser = await puppeteer.launch({
-        headless: false
-    });
+    const browser = await puppeteer.launch();
     const page = (await browser.pages())[0];
 
     await page.goto('https://konachan.net/post.json/?tags=order%3Arandom');
@@ -60,38 +60,27 @@ const templateStr = `
     await new Promise(async (resolve, reject) => {
         let imgDomStr = '';
         for (const img of imgs) {
-            imgDomStr += `<img src="${img.url}" alt="${img.tags}" title="${img.tags}"></img>`;
-            await page.evaluate(async imgUrl => {
+            const filename = img.url.slice(img.url.lastIndexOf('/') + 1);
+
+            imgDomStr += `<img src="${imgUrlPrefix}/${filename}" alt="${img.tags}" title="${img.tags}"></img>`;
+            await page.evaluate(async (imgUrl, filename) => {
                 const res = await fetch(imgUrl, {
                     method: 'get',
                 });
 
                 const blob = await res.blob();
 
-                const reader = new FileReader();
-                reader.readAsArrayBuffer(blob);
-                reader.onload = function (e) {
-                    const data = new Uint8Array(reader.result);
-                    window.saveFile(data, data.length, imgUrl.slice(imgUrl.lastIndexOf('/') + 1));
-                }
-                
-                // const a = document.createElement('a');
-                // a.href = imgUrl;
-                // a.download = imgUrl.slice(imgUrl.lastIndexOf('/') + 1);
-                // a.click();
-            }, img.url);
+                const arrayBuffer = await blob.arrayBuffer();
+                const data = new Uint8Array(arrayBuffer);
+                window.saveFile(data, data.length, filename);
+            }, img.url, filename);
         }
+
+        const htmlStr = templateStr.replace(slot, imgDomStr);
+        fs.writeFileSync('./result.html', htmlStr);
 
         resolve('ok');
     })
-
-
-    // const htmlStr = templateStr.replace(slot, imgDomStr);
-    // fs.writeFile('./result.html', htmlStr, (err) => {
-    //     if (err) {
-    //         throw new Error(err);
-    //     }
-    // })
 
     await browser.close();
 })();

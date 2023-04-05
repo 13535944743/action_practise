@@ -13,12 +13,12 @@ jobs:
         uses: actions/checkout@v3
       - name: 'GET Weather'
         run: |
-          node -v
-          node ./weather.js
-          cat ./result.html
-- name: 'Get Date'
-  run: |
-    echo "REPORT_DATE=$(TZ='Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
+          mkdir img
+          npm install
+          node ./index.js
+      - name: 'Get Date'
+        run: |
+          echo "REPORT_DATE=$(TZ='Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
       - name: 'Send mail'
         uses: dawidd6/action-send-mail@master
         with: 
@@ -31,3 +31,8 @@ jobs:
           to: 1926389897@qq.com
           from: CLZ
           html_body: file://result.html
+      - name: Deploy   
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: build # 部署后提交到那个分支
+          folder: img
