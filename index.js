@@ -8,11 +8,6 @@ const templateStr = `
 <head>
   <title>二次元</title>
   <style>
-    // .container {
-    //   width: 100%;
-    //   /* height: 100%; */
-    //   background-color: #000;
-    // }
   </style>
 </head>
 <body>
@@ -23,7 +18,7 @@ const templateStr = `
 </html>
 `;
 
-const imgUrlPrefix = 'https://raw.githubusercontent.com/13535944743/action_practise/release';
+const imgUrlPrefix = 'https://raw.githubusercontent.com/13535944743/action_practise/build';
 
 (async () => {
     const browser = await puppeteer.launch();
