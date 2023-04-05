@@ -1,4 +1,4 @@
-name: 'Weather Bot'
+name: 'Image Bot'
 on: 
   workflow_dispatch:
   push:
@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'GET Weather'
+      - name: 'GET Images'
         run: |
           mkdir img
           npm install
@@ -27,7 +27,7 @@ jobs:
           secure: true
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
-          subject: 天气预报(${{env.REPORT_DATE}})
+          subject: 每日图片(${{env.REPORT_DATE}})
           to: 1926389897@qq.com
           from: CLZ
           html_body: file://result.html

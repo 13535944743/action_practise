@@ -23,11 +23,18 @@ const templateStr = `
 
 const imgUrlPrefix = 'https://raw.githubusercontent.com/13535944743/action_practise/build';
 
+let imgSource = '';
+if (new Date().getDay() % 2 === 0) {
+    imgSource = 'https://konachan.net/post.json';
+} else {
+    imgSource = 'https://yande.re/post.json'
+}
+
 (async () => {
     const browser = await puppeteer.launch();
     const page = (await browser.pages())[0];
 
-    await page.goto('https://konachan.net/post.json/?tags=order%3Arandom');
+    await page.goto(`${imgSource}/?tags=order%3Arandom`);
 
     const preSelector = await page.waitForSelector('pre');
 
