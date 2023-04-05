@@ -55,7 +55,7 @@ const imgUrlPrefix = 'https://raw.githubusercontent.com/13535944743/action_pract
     await new Promise(async (resolve, reject) => {
         let imgDomStr = '';
         for (const img of imgs) {
-            const filename = img.url.slice(img.url.lastIndexOf('/') + 1);
+            const filename = +new Date() + img.url.slice(img.url.lastIndexOf('.'));
 
             imgDomStr += `<img src="${imgUrlPrefix}/${filename}" alt="${img.tags}" title="${img.tags}"></img>`;
             await page.evaluate(async (imgUrl, filename) => {
