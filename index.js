@@ -31,9 +31,8 @@ let imgSource = 'https://konachan.net/post.json';
 // }
 
 (async () => {
-    const browser = await puppeteer.launch({
-        headless: false
-    });
+    const browser = await puppeteer.launch();
+    
     const page = (await browser.pages())[0];
 
     await page.goto(`${imgSource}?tags=order%3Arandom`);
