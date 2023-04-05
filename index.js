@@ -72,8 +72,7 @@ let imgSource = 'https://konachan.net/post.json';
             imgDomStr += `<img src="${imgUrlPrefix}/${filename}" alt="${img.tags}" title="${img.tags}"></img>`;
             await page.evaluate(async (imgUrl, filename) => {
                 const res = await fetch(imgUrl, {
-                    method: 'get',
-                    credentials: 'include'
+                    method: 'get'
                 });
 
                 const blob = await res.blob();
@@ -91,5 +90,5 @@ let imgSource = 'https://konachan.net/post.json';
         resolve('ok');
     })
 
-    // await browser.close();
+    await browser.close();
 })();
