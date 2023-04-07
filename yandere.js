@@ -29,7 +29,7 @@ const imgUrlPrefix = 'https://raw.githubusercontent.com/13535944743/action_pract
 const imgSource = 'https://yande.re/post.json';     // 图源
 
 (async () => {
-  const res = await fetch(`${imgSource}`, {
+  const res = await fetch(`${imgSource}?tags=order%3Arandom`, {
     // agent
   });
   
