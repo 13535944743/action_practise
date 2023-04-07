@@ -15,7 +15,7 @@ jobs:
         run: |
           mkdir img
           npm install
-          node ./index.js
+          node ./yandere.js
       - name: 'Get Date'
         run: |
           echo "REPORT_DATE=$(TZ='Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV

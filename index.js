@@ -1,5 +1,6 @@
 import puppeteer from 'puppeteer';
 import fs, { read } from 'fs';
+import { resolve } from 'path';
 
 const slot = '{{clz}}';     // 插槽，用于替换
 const templateStr = `
@@ -60,6 +61,18 @@ let imgSource = 'https://konachan.net/post.json';
 
     await page.exposeFunction('saveFile', async (data, byteLength, filename) => {
         const buf = toBuffer(data, byteLength);
+
+        // 1.
+        // const writable = fs.createWriteStream(`./img/${filename}`);
+        // writable.write(buf);
+
+        // await new Promise((resolve, reject) => {
+        //   writable.on('finish', resolve);
+        //   writable.on('error', reject);
+        // });
+        // writable.close();
+
+        // 2.
         fs.writeFileSync(`./img/${filename}`, buf);
     })
 
