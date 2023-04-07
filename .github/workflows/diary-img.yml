@@ -28,7 +28,7 @@ jobs:
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
           subject: 每日图片(${{env.REPORT_DATE}})
-          to: 192638989czh@gmail.com
+          to: 1926389897@qq.com
           from: CLZ
           html_body: file://result.html
       - name: Deploy   
