@@ -26,7 +26,7 @@ const templateStr = `
 `;
 
 const imgUrlPrefix = 'https://raw.githubusercontent.com/13535944743/action_practise/build';
-const imgSource = 'https://konachan.net/post.json';     // 图源
+const imgSource = 'https://yande.re/post.json';     // 图源
 
 (async () => {
   const res = await fetch(`${imgSource}`, {
