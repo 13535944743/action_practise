@@ -1,9 +1,9 @@
 import fs from 'fs';
 import fetch from 'node-fetch';
-// import { SocksProxyAgent } from 'socks-proxy-agent';
+import { SocksProxyAgent } from 'socks-proxy-agent';
 
-// const proxy = 'socks://127.0.0.1:10808';;
-// const agent = new SocksProxyAgent(proxy);
+const proxy = 'socks://127.0.0.1:10808';;
+const agent = new SocksProxyAgent(proxy);
 
 const slot = '{{clz}}';     // 插槽，用于替换
 const templateStr = `
@@ -30,20 +30,19 @@ const imgSource = 'https://danbooru.donmai.us/posts.json';     // 图源
 
 (async () => {
   const res = await fetch(`${imgSource}`, {
-    // agent
+    agent
   });
   
   const texts = await res.text();
 
   const imgs = JSON.parse(texts)                      // 将字符串转换为JSON形式的对象，这里会转成数组。
-        .filter(item => item.rating === 's')           // 过滤，不需要1_8x的（包括疑似）
-        .map(item => {                                 // 只需要图片的tags和url信息
-            return {
-                tags: item.tags,
-                url: item.file_url
-            }
-        });
-  
+    .filter(item => item.rating === 's' && item.file_url)           // 过滤，不需要1_8x的（包括疑似）
+    .map(item => {                                 // 只需要图片的tags和url信息
+        return {
+            tags: item.tags,
+            url: item.file_url
+        }
+    });
   
   let imgDomStr = '';       // 图片DOM元素字符串（一般都是多个）
   for (const img of imgs) {
@@ -51,7 +50,7 @@ const imgSource = 'https://danbooru.donmai.us/posts.json';     // 图源
     imgDomStr += `<img src="${imgUrlPrefix}/${filename}" alt="${img.tags}" title="${img.tags}"></img>`;
 
     const imgRes = await fetch(img.url, {
-      // agent
+      agent
     });
     
     const writeStream = fs.createWriteStream(`./img/${filename}`);
