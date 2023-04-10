@@ -47,7 +47,7 @@ const imgSource = 'https://yande.re/post.json';     // 图源
   let imgDomStr = '';       // 图片DOM元素字符串（一般都是多个）
   for (const img of imgs) {
     const filename = +new Date() + img.url.slice(img.url.lastIndexOf('.'));
-    imgDomStr += `<img src="${imgUrlPrefix}/${filename}" alt="${img.tags}" title="${img.tags}"></img>`;
+    imgDomStr += `<img src="${imgUrlPrefix}/${filename}" alt="${img.tags}" title="${img.tags}" />`;
 
     const imgRes = await fetch(img.url, {
       // agent
