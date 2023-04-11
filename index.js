@@ -81,7 +81,7 @@ let imgSource = 'https://konachan.net/post.json';
         for (const img of imgs) {
             const filename = +new Date() + img.url.slice(img.url.lastIndexOf('.'));
 
-            imgDomStr += `<img src="${imgUrlPrefix}/${filename}" alt="${img.tags}" title="${img.tags}"></img>`;
+            imgDomStr += `<img src="${imgUrlPrefix}/${filename}" alt="${img.tags}" title="${img.tags}" />`;
             await page.evaluate(async (imgUrl, filename) => {
                 const res = await fetch(imgUrl, {
                     method: 'get'
