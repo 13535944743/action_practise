@@ -1,9 +1,5 @@
 import fs from 'fs';
 import fetch from 'node-fetch';
-// import { SocksProxyAgent } from 'socks-proxy-agent';
-
-// const proxy = 'socks://127.0.0.1:10808';;
-// const agent = new SocksProxyAgent(proxy);
 
 const slot = '{{clz}}';     // 插槽，用于替换
 const templateStr = `
@@ -29,9 +25,7 @@ const imgUrlPrefix = 'https://raw.githubusercontent.com/13535944743/action_pract
 const imgSource = 'https://yande.re/post.json';     // 图源
 
 (async () => {
-  const res = await fetch(`${imgSource}?tags=order%3Arandom`, {
-    // agent
-  });
+  const res = await fetch(`${imgSource}?tags=order%3Arandom`);
   
   const texts = await res.text();
 
@@ -49,9 +43,7 @@ const imgSource = 'https://yande.re/post.json';     // 图源
     const filename = +new Date() + img.url.slice(img.url.lastIndexOf('.'));
     imgDomStr += `<img src="${imgUrlPrefix}/${filename}" alt="${img.tags}" title="${img.tags}" />`;
 
-    const imgRes = await fetch(img.url, {
-      // agent
-    });
+    const imgRes = await fetch(img.url);
     
     const writeStream = fs.createWriteStream(`./img/${filename}`);
     imgRes.body.pipe(writeStream);
