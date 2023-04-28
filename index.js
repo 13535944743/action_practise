@@ -21,8 +21,8 @@ const templateStr = `
 </html>
 `;
 
-const imgUrlPrefix = 'https://raw.githubusercontent.com/13535944743/action_practise/build';
-const imgSource = 'https://yande.re/post.json';     // 图源
+const imgUrlPrefix = 'https://www.clzczh.top/action_practise';
+const imgSource = 'https://konachan.net/post.json';     // 图源
 
 (async () => {
   const res = await fetch(`${imgSource}?tags=order%3Arandom`);

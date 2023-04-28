@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
   schedule:
-    - cron: '0 14 * * *'
+    - cron: '0 4 * * *'
 
 jobs:
   bot:
@@ -15,7 +15,7 @@ jobs:
         run: |
           mkdir img
           npm install
-          node ./yandere.js
+          node ./index.js
       - name: 'Get Date'
         run: |
           echo "REPORT_DATE=$(TZ='Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
