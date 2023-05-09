@@ -21,7 +21,7 @@ const templateStr = `
 </html>
 `;
 
-const imgUrlPrefix = 'https://www.clzczh.top/action_practise';
+const imgUrlPrefix = 'https://www.clzczh.top/diary-animate-image';
 const imgSource = 'https://konachan.net/post.json';     // 图源
 
 (async () => {
